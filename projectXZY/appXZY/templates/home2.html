@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    backgroundColor: '#1b1b1b',
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'閫熷害',
+            type:'gauge',
+            min:0,
+            max:220,
+            splitNumber:11,
+            radius: '50%',
+            axisLine: {            // 鍧愭爣杞寸嚎
+                lineStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                    width: 3,
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            axisLabel: {            // 鍧愭爣杞村皬鏍囪
+                textStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    fontWeight: 'bolder',
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            axisTick: {            // 鍧愭爣杞村皬鏍囪
+                length :15,        // 灞炴€ength鎺у埗绾块暱
+                lineStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    color: 'auto',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            splitLine: {           // 鍒嗛殧绾?                length :25,         // 灞炴€ength鎺у埗绾块暱
+                lineStyle: {       // 灞炴€ineStyle锛堣瑙乴ineStyle锛夋帶鍒剁嚎鏉℃牱寮?                    width:3,
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            pointer: {           // 鍒嗛殧绾?                shadowColor : '#fff', //榛樿閫忔槑
+                shadowBlur: 5
+            },
+            title : {
+                textStyle: {       // 鍏朵綑灞炴€ч粯璁や娇鐢ㄥ叏灞€鏂囨湰鏍峰紡锛岃瑙乀EXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic',
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            detail : {
+                backgroundColor: 'rgba(30,144,255,0.8)',
+                borderWidth: 1,
+                borderColor: '#fff',
+                shadowColor : '#fff', //榛樿閫忔槑
+                shadowBlur: 5,
+                offsetCenter: [0, '50%'],       // x, y锛屽崟浣峱x
+                textStyle: {       // 鍏朵綑灞炴€ч粯璁や娇鐢ㄥ叏灞€鏂囨湰鏍峰紡锛岃瑙乀EXTSTYLE
+                    fontWeight: 'bolder',
+                    color: '#fff'
+                }
+            },
+            data:[{value: 40, name: 'km/h'}]
+        },
+        {
+            name:'杞€?,
+            type:'gauge',
+            center : ['25%', '55%'],    // 榛樿鍏ㄥ眬灞呬腑
+            radius : '30%',
+            min:0,
+            max:7,
+            endAngle:45,
+            splitNumber:7,
+            axisLine: {            // 鍧愭爣杞寸嚎
+                lineStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    color: [[0.29, 'lime'],[0.86, '#1e90ff'],[1, '#ff4500']],
+                    width: 2,
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            axisLabel: {            // 鍧愭爣杞村皬鏍囪
+                textStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    fontWeight: 'bolder',
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            axisTick: {            // 鍧愭爣杞村皬鏍囪
+                length :12,        // 灞炴€ength鎺у埗绾块暱
+                lineStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    color: 'auto',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            splitLine: {           // 鍒嗛殧绾?                length :20,         // 灞炴€ength鎺у埗绾块暱
+                lineStyle: {       // 灞炴€ineStyle锛堣瑙乴ineStyle锛夋帶鍒剁嚎鏉℃牱寮?                    width:3,
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            pointer: {
+                width:5,
+                shadowColor : '#fff', //榛樿閫忔槑
+                shadowBlur: 5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y锛屽崟浣峱x
+                textStyle: {       // 鍏朵綑灞炴€ч粯璁や娇鐢ㄥ叏灞€鏂囨湰鏍峰紡锛岃瑙乀EXTSTYLE
+                    fontWeight: 'bolder',
+                    fontStyle: 'italic',
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            detail : {
+                //backgroundColor: 'rgba(30,144,255,0.8)',
+               // borderWidth: 1,
+                borderColor: '#fff',
+                shadowColor : '#fff', //榛樿閫忔槑
+                shadowBlur: 5,
+                width: 80,
+                height:30,
+                offsetCenter: [25, '20%'],       // x, y锛屽崟浣峱x
+                textStyle: {       // 鍏朵綑灞炴€ч粯璁や娇鐢ㄥ叏灞€鏂囨湰鏍峰紡锛岃瑙乀EXTSTYLE
+                    fontWeight: 'bolder',
+                    color: '#fff'
+                }
+            },
+            data:[{value: 1.5, name: 'x1000 r/min'}]
+        },
+        {
+            name:'娌硅〃',
+            type:'gauge',
+            center : ['75%', '50%'],    // 榛樿鍏ㄥ眬灞呬腑
+            radius : '30%',
+            min:0,
+            max:2,
+            startAngle:135,
+            endAngle:45,
+            splitNumber:2,
+            axisLine: {            // 鍧愭爣杞寸嚎
+                lineStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    color: [[0.2, 'lime'],[0.8, '#1e90ff'],[1, '#ff4500']],
+                    width: 2,
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            axisTick: {            // 鍧愭爣杞村皬鏍囪
+                length :12,        // 灞炴€ength鎺у埗绾块暱
+                lineStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    color: 'auto',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            axisLabel: {
+                textStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    fontWeight: 'bolder',
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                },
+                formatter:function(v){
+                    switch (v + '') {
+                        case '0' : return 'E';
+                        case '1' : return 'Gas';
+                        case '2' : return 'F';
+                    }
+                }
+            },
+            splitLine: {           // 鍒嗛殧绾?                length :15,         // 灞炴€ength鎺у埗绾块暱
+                lineStyle: {       // 灞炴€ineStyle锛堣瑙乴ineStyle锛夋帶鍒剁嚎鏉℃牱寮?                    width:3,
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            pointer: {
+                width:2,
+                shadowColor : '#fff', //榛樿閫忔槑
+                shadowBlur: 5
+            },
+            title : {
+                show: false
+            },
+            detail : {
+                show: false
+            },
+            data:[{value: 0.5, name: 'gas'}]
+        },
+        {
+            name:'姘磋〃',
+            type:'gauge',
+            center : ['75%', '50%'],    // 榛樿鍏ㄥ眬灞呬腑
+            radius : '30%',
+            min:0,
+            max:2,
+            startAngle:315,
+            endAngle:225,
+            splitNumber:2,
+            axisLine: {            // 鍧愭爣杞寸嚎
+                lineStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    color: [[0.2, 'lime'],[0.8, '#1e90ff'],[1, '#ff4500']],
+                    width: 2,
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            axisTick: {            // 鍧愭爣杞村皬鏍囪
+                show: false
+            },
+            axisLabel: {
+                textStyle: {       // 灞炴€ineStyle鎺у埗绾挎潯鏍峰紡
+                    fontWeight: 'bolder',
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                },
+                formatter:function(v){
+                    switch (v + '') {
+                        case '0' : return 'H';
+                        case '1' : return 'Water';
+                        case '2' : return 'C';
+                    }
+                }
+            },
+            splitLine: {           // 鍒嗛殧绾?                length :15,         // 灞炴€ength鎺у埗绾块暱
+                lineStyle: {       // 灞炴€ineStyle锛堣瑙乴ineStyle锛夋帶鍒剁嚎鏉℃牱寮?                    width:3,
+                    color: '#fff',
+                    shadowColor : '#fff', //榛樿閫忔槑
+                    shadowBlur: 10
+                }
+            },
+            pointer: {
+                width:2,
+                shadowColor : '#fff', //榛樿閫忔槑
+                shadowBlur: 5
+            },
+            title : {
+                show: false
+            },
+            detail : {
+                show: false
+            },
+            data:[{value: 0.5, name: 'gas'}]
+        }
+    ]
+};
+
+setInterval(function (){
+    option.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
+    option.series[1].data[0].value = (Math.random()*7).toFixed(2) - 0;
+    option.series[2].data[0].value = (Math.random()*2).toFixed(2) - 0;
+    option.series[3].data[0].value = (Math.random()*2).toFixed(2) - 0;
+    myChart.setOption(option);
+},2000)
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
